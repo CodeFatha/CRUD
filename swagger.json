@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Class API",
-    "description": "API documentation for the Class application",
-    "version": "1.0.0"
+    "title": "School Class API",
+    "description": "API documentation for the School Class application",
+    "version": "2.12.77"
   },
-  "host": "localhost:3000",
+  "host": "crud-y8ei.onrender.com",
   "basePath": "/api",
   "schemes": [
     "https"

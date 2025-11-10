@@ -2,11 +2,12 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
     info: {
-        title: 'Class API',
-        description: 'API documentation for the Class application',
-        version: '1.0.0',
+        title: 'School Class API',
+        description: 'API documentation for the School Class application',
+        version: '2.12.77',
     },
-    host: 'https://crud-y8ei.onrender.com',
+    host: 'crud-y8ei.onrender.com',
+    "basePath": "/api",
     
     schemes: ['https'],
 };
