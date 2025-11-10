@@ -1,4 +1,6 @@
-const model = require('../models');
+const model = require('../models/students');
+const validation = require('../validation/students');
+const { ObjectId } = require('mongodb');
 
 exports.fetchStudents = async (req, res) => {     
     try {
@@ -12,7 +14,11 @@ exports.fetchStudents = async (req, res) => {
     }
 }
     
-exports.fetchStudent = async (req, res) => {     
+exports.fetchStudent = async (req, res) => {    
+
+    if (!ObjectId.isValid(req.params.id))
+      return res.status(400).json({ error: 'Invalid student ID' }); 
+
     try {
         const student = await model.getStudent(req.params.id);
         if (!student) {
@@ -24,7 +30,27 @@ exports.fetchStudent = async (req, res) => {
     }
 }
 
-exports.deleteStudent = async (req, res) => {     
+exports.fetchStudentForCourse = async (id) => {     
+
+    if (!ObjectId.isValid(id))
+      return res.status(400).json({ error: 'Invalid student ID' });
+
+    try {
+        const student = await model.getStudent(id);
+        if (!student) {
+            return null
+        }
+        return student;
+    } catch (error) {
+       return error;
+    }
+}
+
+exports.deleteStudent = async (req, res) => {    
+    
+    if (!ObjectId.isValid(req.params.id))
+      return res.status(400).json({ error: 'Invalid student ID' });
+
     try {
         const result = await model.deleteStudent(req.params.id);
         if (result.deletedCount === 0) {
@@ -36,7 +62,11 @@ exports.deleteStudent = async (req, res) => {
     }
 }
 
-exports.addStudent = async (req, res) => {     
+exports.addStudent = async (req, res) => {   
+    const validationError = validation.validateStudentCreate(req.body);
+    if (validationError) {
+        return res.status(400).json({ message: validationError });
+    }
     try {
         const result = await model.addStudent(req.body);
         if (!result.acknowledged) {
@@ -48,7 +78,14 @@ exports.addStudent = async (req, res) => {
     }
 }
 
-exports.updateStudent = async (req, res) => {     
+exports.updateStudent = async (req, res) => {    
+    const validationError = validation.validateStudentUpdate(req.body);
+    if (validationError) {
+        return res.status(400).json({ message: validationError });
+    }
+    if (!ObjectId.isValid(req.params.id))
+      return res.status(400).json({ error: 'Invalid student ID' }); 
+
     try {
         const result = await model.updateStudent(req.params.id, req.body);
         if (result.matchedCount === 0) {

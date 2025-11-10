@@ -32,4 +32,5 @@ updateStudent = (id, student) => {
     return result;
 }
 
+
 module.exports = { getStudents, getStudent, deleteStudent, addStudent, updateStudent };
