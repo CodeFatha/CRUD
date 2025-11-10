@@ -6,7 +6,7 @@ const doc = {
         description: 'API documentation for the Class application',
         version: '1.0.0',
     },
-    host: 'localhost:3000',
+    host: 'https://crud-y8ei.onrender.com',
     
     schemes: ['https'],
 };
