@@ -32,7 +32,7 @@ app.use(cors({methods: ['GET', 'POST', 'PUT', 'DELETE'], origin: '*'}));
 passport.use(new GithubStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: '/api/auth/callback',
+    callbackURL: 'https://crud-y8ei.onrender.com/api/auth/callback',
 },
 function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
