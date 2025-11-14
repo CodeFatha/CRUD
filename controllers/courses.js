@@ -69,7 +69,7 @@ exports.addCourse = async (req, res) => {
                 name: 'Keyboard',
                 'description': 'Learn to type on a keyboard',
                 'credits': 3,
-                'level': '2'
+                'level': 2
             }
         }
 
@@ -106,7 +106,7 @@ exports.updateCourse = async (req, res) => {
                 name: 'Keyboard',
                 'description': 'Learn to type on a keyboard',
                 'credits': 3,
-                'level': '2'
+                'level': 2
             }
         }
 

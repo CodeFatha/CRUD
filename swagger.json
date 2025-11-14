@@ -325,8 +325,8 @@
                   "example": 3
                 },
                 "level": {
-                  "type": "string",
-                  "example": "2"
+                  "type": "number",
+                  "example": 2
                 }
               }
             }
