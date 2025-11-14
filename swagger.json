@@ -77,19 +77,19 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "name of student"
+                  "example": "Pamela"
                 },
                 "surname": {
                   "type": "string",
-                  "example": "surname of student"
+                  "example": "Schmidt"
                 },
                 "email": {
                   "type": "string",
-                  "example": "email of student"
+                  "example": "pam@byui.edu"
                 },
                 "dob": {
                   "type": "string",
-                  "example": "yyyy-mm-dd"
+                  "example": "2001-09-15"
                 },
                 "gpa": {
                   "type": "number",
@@ -97,7 +97,7 @@
                 },
                 "course_id": {
                   "type": "string",
-                  "example": "course ObjectId"
+                  "example": "6911c76b30749e6c5540a6ff"
                 }
               }
             }
@@ -310,15 +310,15 @@
               "properties": {
                 "code": {
                   "type": "string",
-                  "example": "AE324"
+                  "example": "ART203"
                 },
                 "name": {
                   "type": "string",
-                  "example": "Keyboard"
+                  "example": "The History of Art"
                 },
                 "description": {
                   "type": "string",
-                  "example": "Learn to type on a keyboard"
+                  "example": "A comprehensive overview of art history"
                 },
                 "credits": {
                   "type": "number",
@@ -360,6 +360,37 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "course",
+            "in": "body",
+            "description": "Course to add",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "example": "ART203"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "The History of Art"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A comprehensive overview of art history"
+                },
+                "credits": {
+                  "type": "number",
+                  "example": 3
+                },
+                "level": {
+                  "type": "number",
+                  "example": 2
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -368,6 +399,15 @@
           },
           "201": {
             "description": "Course updated successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
