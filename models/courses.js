@@ -3,8 +3,8 @@ const { ObjectId } = require('mongodb');
 
 getCourses = (req, res) => {
     try {
-        const database = db.getDB();
-        courses = database.collection('course').find().toArray();
+        const database = db.fetchDB();
+        courses = database.collection('courses').find().toArray();
         return courses;
     } catch (error) {
         res.status(500).json({ message: 'An error occurred while fetching the course data.', error: error });
