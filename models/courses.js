@@ -1,10 +1,14 @@
 const db = require('../db/connect');
 const { ObjectId } = require('mongodb');
 
-getCourses = () => {
-    const database = db.getDB();
-    courses = database.collection('courses').find().toArray();
-    return courses;
+getCourses = (req, res) => {
+    try {
+        const database = db.getDB();
+        courses = database.collection('course').find().toArray();
+        return courses;
+    } catch (error) {
+        res.status(500).json({ message: 'An error occurred while fetching the course data.', error: error });
+    }
 }
 
 getCourse = (id) => {
