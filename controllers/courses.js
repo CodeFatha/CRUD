@@ -65,9 +65,9 @@ exports.addCourse = async (req, res) => {
             description: 'Course to add',
             required: true,
             schema: {
-                'code': 'AE324',
-                name: 'Keyboard',
-                'description': 'Learn to type on a keyboard',
+                'code': 'ART203',
+                name: 'The History of Art',
+                'description': 'A comprehensive overview of art history',
                 'credits': 3,
                 'level': 2
             }
@@ -102,9 +102,9 @@ exports.updateCourse = async (req, res) => {
             description: 'Course to add',
             required: true,
             schema: {
-                'code': 'AE124,
-                name: 'Keyboard',
-                'description': 'Learn to type on a keyboard',
+               'code': 'ART203',
+                name: 'The History of Art',
+                'description': 'A comprehensive overview of art history',
                 'credits': 3,
                 'level': 2
             }

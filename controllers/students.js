@@ -85,12 +85,12 @@ exports.addStudent = async (req, res) => {
             description: 'student to add',
             required: true,
             schema: {
-                name: 'name of student',
-                surname: 'surname of student',
-                email: 'email of student',
-                dob: 'yyyy-mm-dd',
+                name: 'Pamela',
+                surname: 'Schmidt',
+                email: 'pam@byui.edu',
+                dob: '2001-09-15',
                 gpa: 4.0,
-                course_id: 'course ObjectId'
+                course_id: '6911c76b30749e6c5540a6ff'
             }
         }
 
