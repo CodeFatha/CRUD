@@ -4,7 +4,7 @@ const coursesController = require('../controllers/courses');
 const { isAuthenticated } = require('../validation/authenticate');
 const passport = require('passport');
 
-router.get('/students', isAuthenticated, studentsController.fetchStudents);  
+router.get('/students', studentsController.fetchStudents);  
 router.get('/students/:id', studentsController.fetchStudent);
 router.post('/students/create', isAuthenticated, studentsController.addStudent);
 router.put('/students/update/:id', isAuthenticated, studentsController.updateStudent);
