@@ -3,7 +3,11 @@ const studentsController = require('./students');
 const validation = require('../validation/courses');
 const { ObjectId } = require('mongodb');
 
-exports.fetchStudentCourse = async (req, res) => {  
+exports.fetchStudentCourse = async (req, res) => { 
+    /* 
+     #swagger.tags = ['Courses']
+     #swagger.description = 'Get a course for a student'
+    */ 
     try {
         student = await studentsController.fetchStudentForCourse(req.params.studentId);
         const course = await model.getStudentCourse(student.course_id);    
@@ -17,6 +21,10 @@ exports.fetchStudentCourse = async (req, res) => {
 }
 
 exports.fetchCourses = async (req, res) => {   
+    /* 
+     #swagger.tags = ['Courses']
+     #swagger.description = 'Get all courses'
+    */
     try {
         const courses = await model.getCourses();
         if (!courses) {
@@ -29,7 +37,10 @@ exports.fetchCourses = async (req, res) => {
 }
 
 exports.fetchCourse = async (req, res) => {     
-
+    /* 
+     #swagger.tags = ['Courses']
+     #swagger.description = 'Get a course by ID'
+    */
     if (!ObjectId.isValid(req.params.id))
       return res.status(400).json({ error: 'Invalid course ID' });
 
@@ -45,6 +56,27 @@ exports.fetchCourse = async (req, res) => {
 }
 
 exports.addCourse = async (req, res) => {     
+    /*
+        #swagger.tags = ['Courses']
+        #swagger.description = 'Create a new course'
+
+        #swagger.parameters['course'] = {
+            in: 'body',
+            description: 'Course to add',
+            required: true,
+            schema: {
+                'code': 101,
+                name: 'Keyboard',
+                'description': 'Learn to type on a keyboard',
+                'credits': 3,
+                'level': 'Beginner'
+            }
+        }
+
+        #swagger.responses[201] = {
+            description: 'Course created successfully'
+        }
+    */
     const validationError = validation.validateCourseCreate(req.body);
     if (validationError) {
         return res.status(400).json({ message: validationError });
@@ -61,7 +93,27 @@ exports.addCourse = async (req, res) => {
 }
 
 exports.updateCourse = async (req, res) => {  
+    /*
+        #swagger.tags = ['Courses']
+        #swagger.description = 'Update an existing course'
 
+        #swagger.parameters['course'] = {
+            in: 'body',
+            description: 'Course to add',
+            required: true,
+            schema: {
+                'code': 101,
+                name: 'Keyboard',
+                'description': 'Learn to type on a keyboard',
+                'credits': 3,
+                'level': 'Beginner'
+            }
+        }
+
+        #swagger.responses[201] = {
+            description: 'Course updated successfully'
+        }
+    */
     if (!ObjectId.isValid(req.params.id))
       return res.status(400).json({ error: 'Invalid course ID' });  
 
@@ -82,7 +134,10 @@ exports.updateCourse = async (req, res) => {
 }
 
 exports.deleteCourse = async (req, res) => {     
-
+    /* 
+     #swagger.tags = ['Courses']
+     #swagger.description = 'Delete an existing course'
+    */
     if (!ObjectId.isValid(req.params.id))
       return res.status(400).json({ error: 'Invalid course ID' });
 

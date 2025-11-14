@@ -2,7 +2,11 @@ const model = require('../models/students');
 const validation = require('../validation/students');
 const { ObjectId } = require('mongodb');
 
-exports.fetchStudents = async (req, res) => {     
+exports.fetchStudents = async (req, res) => {   
+    /* 
+     #swagger.tags = ['Students']
+     #swagger.description = 'Get all students'
+    */  
     try {
         const students = await model.getStudents();
         if (!students) {
@@ -15,7 +19,10 @@ exports.fetchStudents = async (req, res) => {
 }
     
 exports.fetchStudent = async (req, res) => {    
-
+    /* 
+     #swagger.tags = ['Students']
+     #swagger.description = 'Get a student by ID'
+    */
     if (!ObjectId.isValid(req.params.id))
       return res.status(400).json({ error: 'Invalid student ID' }); 
 
@@ -31,7 +38,10 @@ exports.fetchStudent = async (req, res) => {
 }
 
 exports.fetchStudentForCourse = async (id) => {     
-
+    /* 
+     #swagger.tags = ['Students']
+     #swagger.description = 'Get a student for a course'
+    */
     if (!ObjectId.isValid(id))
       return res.status(400).json({ error: 'Invalid student ID' });
 
@@ -47,7 +57,10 @@ exports.fetchStudentForCourse = async (id) => {
 }
 
 exports.deleteStudent = async (req, res) => {    
-    
+    /* 
+     #swagger.tags = ['Students']
+     #swagger.description = 'Delete an existing student'
+    */
     if (!ObjectId.isValid(req.params.id))
       return res.status(400).json({ error: 'Invalid student ID' });
 
@@ -63,6 +76,28 @@ exports.deleteStudent = async (req, res) => {
 }
 
 exports.addStudent = async (req, res) => {   
+    /*
+        #swagger.tags = ['Students']
+        #swagger.description = 'Create a new student'
+
+        #swagger.parameters['student'] = {
+            in: 'body',
+            description: 'student to add',
+            required: true,
+            schema: {
+                name: 'name of student',
+                surname: 'surname of student',
+                email: 'email of student',
+                dob: 'yyyy-mm-dd',
+                gpa: '0-4.0',
+                course_id: 'course ObjectId'
+            }
+        }
+
+        #swagger.responses[201] = {
+            description: 'Student created successfully'
+        }
+    */
     const validationError = validation.validateStudentCreate(req.body);
     if (validationError) {
         return res.status(400).json({ message: validationError });
@@ -79,6 +114,28 @@ exports.addStudent = async (req, res) => {
 }
 
 exports.updateStudent = async (req, res) => {    
+    /*
+        #swagger.tags = ['Students']
+        #swagger.description = 'Update an existing student'
+
+        #swagger.parameters['student'] = {
+            in: 'body',
+            description: 'student to add',
+            required: true,
+            schema: {
+                name: 'name of student',
+                surname: 'surname of student',
+                email: 'email of student',
+                dob: 'yyyy-mm-dd',
+                gpa: '0-4.0',
+                course_id: 'course ObjectId'
+            }
+        }
+
+        #swagger.responses[201] = {
+            description: 'Student updated successfully'
+        }
+    */
     const validationError = validation.validateStudentUpdate(req.body);
     if (validationError) {
         return res.status(400).json({ message: validationError });

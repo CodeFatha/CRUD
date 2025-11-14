@@ -13,7 +13,10 @@
   "paths": {
     "/students": {
       "get": {
-        "description": "",
+        "tags": [
+          "Students"
+        ],
+        "description": "Get all students",
         "responses": {
           "200": {
             "description": "OK"
@@ -29,7 +32,10 @@
     },
     "/students/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Students"
+        ],
+        "description": "Get a student by ID",
         "parameters": [
           {
             "name": "id",
@@ -56,10 +62,53 @@
     },
     "/students/create": {
       "post": {
-        "description": "",
+        "tags": [
+          "Students"
+        ],
+        "description": "Create a new student",
+        "parameters": [
+          {
+            "name": "student",
+            "in": "body",
+            "description": "student to add",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "name of student"
+                },
+                "surname": {
+                  "type": "string",
+                  "example": "surname of student"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "email of student"
+                },
+                "dob": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
+                },
+                "gpa": {
+                  "type": "string",
+                  "example": "0-4.0"
+                },
+                "course_id": {
+                  "type": "string",
+                  "example": "course ObjectId"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Student created successfully"
           },
           "400": {
             "description": "Bad Request"
@@ -72,18 +121,59 @@
     },
     "/students/update/{id}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Students"
+        ],
+        "description": "Update an existing student",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "student",
+            "in": "body",
+            "description": "student to add",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "name of student"
+                },
+                "surname": {
+                  "type": "string",
+                  "example": "surname of student"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "email of student"
+                },
+                "dob": {
+                  "type": "string",
+                  "example": "yyyy-mm-dd"
+                },
+                "gpa": {
+                  "type": "string",
+                  "example": "0-4.0"
+                },
+                "course_id": {
+                  "type": "string",
+                  "example": "course ObjectId"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Student updated successfully"
           },
           "400": {
             "description": "Bad Request"
@@ -99,7 +189,10 @@
     },
     "/students/delete/{id}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Students"
+        ],
+        "description": "Delete an existing student",
         "parameters": [
           {
             "name": "id",
@@ -126,7 +219,10 @@
     },
     "/courses": {
       "get": {
-        "description": "",
+        "tags": [
+          "Courses"
+        ],
+        "description": "Get all courses",
         "responses": {
           "200": {
             "description": "OK"
@@ -142,7 +238,10 @@
     },
     "/student-course/{studentId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Courses"
+        ],
+        "description": "Get a course for a student",
         "parameters": [
           {
             "name": "studentId",
@@ -166,7 +265,10 @@
     },
     "/courses/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Courses"
+        ],
+        "description": "Get a course by ID",
         "parameters": [
           {
             "name": "id",
@@ -193,10 +295,49 @@
     },
     "/courses/create": {
       "post": {
-        "description": "",
+        "tags": [
+          "Courses"
+        ],
+        "description": "Create a new course",
+        "parameters": [
+          {
+            "name": "course",
+            "in": "body",
+            "description": "Course to add",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "example": 101
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Keyboard"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Learn to type on a keyboard"
+                },
+                "credits": {
+                  "type": "number",
+                  "example": 3
+                },
+                "level": {
+                  "type": "string",
+                  "example": "Beginner"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "201": {
-            "description": "Created"
+            "description": "Course created successfully"
           },
           "400": {
             "description": "Bad Request"
@@ -209,18 +350,55 @@
     },
     "/courses/update/{id}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Courses"
+        ],
+        "description": "Update an existing course",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "course",
+            "in": "body",
+            "description": "Course to add",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number",
+                  "example": 101
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Keyboard"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Learn to type on a keyboard"
+                },
+                "credits": {
+                  "type": "number",
+                  "example": 3
+                },
+                "level": {
+                  "type": "string",
+                  "example": "Beginner"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "201": {
+            "description": "Course updated successfully"
           },
           "400": {
             "description": "Bad Request"
@@ -236,7 +414,10 @@
     },
     "/courses/delete/{id}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Courses"
+        ],
+        "description": "Delete an existing course",
         "parameters": [
           {
             "name": "id",
@@ -257,6 +438,46 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/github": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/callback": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/failure": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
