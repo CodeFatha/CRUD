@@ -92,8 +92,8 @@
                   "example": "yyyy-mm-dd"
                 },
                 "gpa": {
-                  "type": "string",
-                  "example": "0-4.0"
+                  "type": "number",
+                  "example": 4
                 },
                 "course_id": {
                   "type": "string",
@@ -157,8 +157,8 @@
                   "example": "yyyy-mm-dd"
                 },
                 "gpa": {
-                  "type": "string",
-                  "example": "0-4.0"
+                  "type": "number",
+                  "example": 4
                 },
                 "course_id": {
                   "type": "string",
@@ -309,8 +309,8 @@
               "type": "object",
               "properties": {
                 "code": {
-                  "type": "number",
-                  "example": 101
+                  "type": "string",
+                  "example": "AE324"
                 },
                 "name": {
                   "type": "string",
@@ -326,7 +326,7 @@
                 },
                 "level": {
                   "type": "string",
-                  "example": "Beginner"
+                  "example": "2"
                 }
               }
             }
@@ -360,37 +360,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "course",
-            "in": "body",
-            "description": "Course to add",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "code": {
-                  "type": "number",
-                  "example": 101
-                },
-                "name": {
-                  "type": "string",
-                  "example": "Keyboard"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "Learn to type on a keyboard"
-                },
-                "credits": {
-                  "type": "number",
-                  "example": 3
-                },
-                "level": {
-                  "type": "string",
-                  "example": "Beginner"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -399,15 +368,6 @@
           },
           "201": {
             "description": "Course updated successfully"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }

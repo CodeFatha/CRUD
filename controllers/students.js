@@ -89,7 +89,7 @@ exports.addStudent = async (req, res) => {
                 surname: 'surname of student',
                 email: 'email of student',
                 dob: 'yyyy-mm-dd',
-                gpa: '0-4.0',
+                gpa: 4.0,
                 course_id: 'course ObjectId'
             }
         }
@@ -127,7 +127,7 @@ exports.updateStudent = async (req, res) => {
                 surname: 'surname of student',
                 email: 'email of student',
                 dob: 'yyyy-mm-dd',
-                gpa: '0-4.0',
+                gpa: 4.0,
                 course_id: 'course ObjectId'
             }
         }

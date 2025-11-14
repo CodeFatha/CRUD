@@ -65,11 +65,11 @@ exports.addCourse = async (req, res) => {
             description: 'Course to add',
             required: true,
             schema: {
-                'code': 101,
+                'code': 'AE324',
                 name: 'Keyboard',
                 'description': 'Learn to type on a keyboard',
                 'credits': 3,
-                'level': 'Beginner'
+                'level': '2'
             }
         }
 
@@ -102,11 +102,11 @@ exports.updateCourse = async (req, res) => {
             description: 'Course to add',
             required: true,
             schema: {
-                'code': 101,
+                'code': 'AE124,
                 name: 'Keyboard',
                 'description': 'Learn to type on a keyboard',
                 'credits': 3,
-                'level': 'Beginner'
+                'level': '2'
             }
         }
 
